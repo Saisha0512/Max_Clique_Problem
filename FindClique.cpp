@@ -1,6 +1,4 @@
 // This file implements the FINDCLIQUE Algorithm from the research paper referred using Binary Search & SELECT Algorithm.
-# include "Graph.cpp"
-# include "Select.cpp"
 # include <vector>
 # include <algorithm>
 using namespace std;

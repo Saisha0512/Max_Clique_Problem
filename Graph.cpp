@@ -1,54 +1,37 @@
-// This files defines the Graph Class used by all the functions implemented in my MCP Approach.
-# include <iostream>
+// This files defines the functions for the Graph Class used by all the functions implemented in my MCP Approach.
+# include "Graph.h"
 # include <vector>
 using namespace std;
 
-class Graph {
-public:
-    int n; // No of vertices of the graph
-    vector<vector<int>> adj; // Adjacency Matrix of the graph
-    vector<int> degree; // Vector to store the degree of each vertex
+// Constructor
+Graph :: Graph(int n) {
+    this->n = n;
+    adj = vector<vector<int>>(n + 1, vector<int>(n + 1, 0));
+    degree = vector<int>(n + 1, 0);
+}
 
-    // Constructor: Create a graph with n vertices
-    Graph(int n) {
-        this->n = n;
-        // Dynamically allocating the adjacency matrix : 
-        adj = vector<vector<int>>(n + 1, vector<int>(n + 1, 0));
+// Adding an edge from u to v : 
+void Graph :: addEdge(int u, int v) {
+    if (u < 1 || u > n || v < 1 || v > n) return;
 
-        // Initializing the degree of all the vertices as 0 : 
-        degree = vector<int>(n + 1, 0);
+    if (adj[u][v] == 0) {
+        adj[u][v] = adj[v][u] = 1;
+        degree[u]++;
+        degree[v]++;
     }
+}
 
-    // Function to add an edge from u to v : 
-    void addEdge(int u, int v) {
-        if (u < 1 || u > n || v < 1 || v > n) return;
-
-        // Adding edge only if it does not already exist : 
-        if (adj[u][v] == 0) {
-            // Undirected Graph 
-            adj[u][v] = 1;
-            adj[v][u] = 1;
-
-            // Increasing degree count : 
-            degree[u]++;
-            degree[v]++;
-        }
+// Building degrees : 
+void Graph :: buildDegree() {
+    for (int i = 1; i <= n; i++) {
+        int count = 0;
+        for (int j = 1; j <= n; j++)
+            if (adj[i][j]) count++;
+        degree[i] = count;
     }
+}
 
-    // Function to recalculate degrees : 
-    void buildDegree() {
-        for (int i = 1; i <= n; i++) {
-            int degCount = 0;
-            for (int j = 1; j <= n; j++) {
-                if (adj[i][j] == 1)
-                    degCount++;
-            }
-            degree[i] = degCount;
-        }
-    }
-
-    // Function to check if there is an edge present between two vertices : 
-    bool isConnected(int u, int v) const {
-        return adj[u][v] == 1;
-    }
-};
+// Checking the connections : 
+bool Graph :: isConnected(int u, int v) const {
+    return adj[u][v] == 1;
+}

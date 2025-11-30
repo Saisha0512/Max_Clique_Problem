@@ -1,5 +1,7 @@
 // This is the main file of my MCP Approach : 
 # include "Graph.cpp"
+# include "IsClique.cpp"
+# include "Select.cpp"
 # include "FindClique.cpp"
 # include <iostream>
 using namespace std;

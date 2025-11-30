@@ -1,5 +1,4 @@
 // This file implements the ISCLIQUE Algorithm from the research paper referred, to check if a given set of vertices forms a clique. 
-# include "Graph.cpp"
 # include <vector>
 using namespace std;
 

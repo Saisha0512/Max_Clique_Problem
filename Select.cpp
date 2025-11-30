@@ -1,6 +1,4 @@
 // This file implements the SELECT Algorithm from the research paper referred, to try all the combinations possible of size L & find a Clique.
-# include "Graph.cpp"
-# include "IsClique.cpp"
 # include <vector>
 using namespace std;
 
