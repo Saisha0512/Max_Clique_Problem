@@ -8,8 +8,9 @@ pair<int, vector<int>> FINDCLIQUE(const Graph &G) {
     int maxDegree = 0;
 
     // Getting the maximum degree :
-    for (int i = 1; i <= G.n; i++)
+    for (int i = 1; i <= G.n; i++){
         maxDegree = max(maxDegree, G.degree[i]);
+    }
 
     int low = 0, high = maxDegree;
     int bestSize = 0;
